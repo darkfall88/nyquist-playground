@@ -1,3 +1,1 @@
-# nyquist-playground
-
 TBD
