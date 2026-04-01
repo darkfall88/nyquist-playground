@@ -4,8 +4,8 @@ import numpy as np
 st.title("Generated VoIP Signal")
 
 #typical sampling rate for VoIP is 16 kHz
-seconds_of_signal = 10
-number_of_samples = seconds_of_signal * 16000
+seconds_of_signal = 1
+number_of_samples = seconds_of_signal * 1600
 
 #time axis values
 time_axis = np.linspace(0, seconds_of_signal, number_of_samples)
@@ -14,7 +14,7 @@ time_axis = np.linspace(0, seconds_of_signal, number_of_samples)
 envelope = np.convolve(np.random.rand(number_of_samples), np.ones(50)/50, mode='same')
 
 #creates pauses
-envelope[envelope < 0.25] = 0
+envelope[envelope < 0.5] = 0
 
 frequencies_and_noise = (
     0.6 * np.sin(2 * np.pi * 120 * time_axis) +
