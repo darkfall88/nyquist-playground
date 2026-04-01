@@ -1,9 +1,10 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 st.title("Generated VoIP Signal")
 
-#typical sampling rate for VoIP is 16 kHz
+#typical sampling rate for VoIP is 16 kHz, now lower for testing
 seconds_of_signal = 1
 number_of_samples = seconds_of_signal * 1600
 
@@ -25,4 +26,7 @@ frequencies_and_noise = (
 
 generated_signal = frequencies_and_noise * envelope
 
-st.line_chart(generated_signal)
+#used dataframe so the x-axis uses time instead of sample numbers
+dataframe_generated_signal = pd.DataFrame(generated_signal, index=time_axis)
+
+st.line_chart(dataframe_generated_signal)
